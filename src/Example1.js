@@ -23,7 +23,8 @@ export default function Example() {
     ],
   });
 
-  if (postsQuery.isLoading || usersQuery.isLoading) return 'Loading...';
+  if (postsQuery.isLoading) return 'Loading Posts...';
+  if (usersQuery.isLoading) return 'Loading Users...';
 
   if (postsQuery.error)
     return 'An error has occurred: ' + postsQuery.error.message;
@@ -34,7 +35,7 @@ export default function Example() {
   return (
     <div>
       <h2>Posts</h2>
-      {postsQuery.data?.slice(10).map((post) => {
+      {postsQuery.data?.map((post) => {
         return (
           <div key={post.id} style={{ display: 'flex' }}>
             <span>{post.id}-&nbsp;</span>
